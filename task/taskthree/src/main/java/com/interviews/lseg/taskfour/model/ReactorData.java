@@ -1,6 +1,7 @@
 package com.interviews.lseg.taskfour.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -9,7 +10,7 @@ import static java.time.format.DateTimeFormatter.ofPattern;
 
 public record ReactorData(
         BigDecimal output,
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss '+2'")
+        @JsonDeserialize(using = DateDeserializer.class)
         LocalDateTime time) {
     @Override
     public String toString() {
